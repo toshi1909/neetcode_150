@@ -2,12 +2,24 @@ from typing import List
 
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        num_dict = {}
-
-        for n in nums:
-            if n not in num_dict:
-                num_dict[n] = None
-            else:
+        # time: O(n)
+        # space: O(n)
+        seen = set()
+        for num in nums:
+            if num in seen:
                 return True
-        else:
-            return False
+            seen.add(num)
+        return False
+
+
+def main():
+    nums = [1,2,3,4,1]
+    solution = Solution()
+    if solution.hasDuplicate(nums):
+        print("Correct solution")
+    else:
+        print("Wrong solution")
+
+# Call the main method
+if __name__ == "__main__":
+    main()
